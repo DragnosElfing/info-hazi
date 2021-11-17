@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root{
+    --bg-color: #36393e;
+    --hdr-color: linear-gradient(to bottom right, #b198bb, #795f8a 60%);
+    --font-color: #D1AA4C;
+    --dark: #45494e;
+    --darker: #282b30;
+
+    --purple1: #9C4FAD;
+    --purple2: #D665F0;
+
+    --red: #d35d76;
+}
+
+html{
+    font-family: 'Roboto', sans-serif;
+    color: var(--font-color);
+    background-color: var(--bg-color);
+}
+body{
+    overflow-x: hidden;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10% 0;
+
+    font-size: 15;
+    background: var(--hdr-color);
+
+    z-index: -3;
+}
+
+article{
+    font-size: 20;
+    width: 100%;
+}
+
+section:nth-child(1){
+    margin-top: 0cm;
+}
+
+.grid {
+    display: grid;
+    grid-template: 
+        "t t t" 10vh
+        "c c c" 10vh
+        "b b b" 10vh
+        / 33% 34% 33%;
+    grid-row-gap: 10ch;
+
+    justify-items: center;
+
+    min-width: 100%;
+    margin-top: 5%;
+}
+.grid section .sec{
+    text-align: center;
+    min-width: 100%;
+    padding: 1ch;
+}
+
+.flex section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 30vh;
+}
+.flex section:nth-child(even){
+    background-color: var(--red);
+}
+.flex section:nth-child(even) .sec{
+    text-align: left;
+    max-width: 80%;
+    padding: 1ch;
+    align-self: center;
+
+    background-color: var(--bg-color);
+    filter: drop-shadow(8px 8px 0px var(--dark));
+}
+
+#copy{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+    background-color: var(--darker);
+    border-top: 1px solid var(--dark);
+
+    bottom: 0;
+}
+
+#about_me{
+    display: flex;
+    align-items: center;
+    margin: 0 5%;
+}
+
+#map{
+    width: 30%;
+    height: 50vh;
+    padding-right: 1ch;
+    border: 0;
+    border-right: 10px solid var(--purple1);
+}
+
+iframe{
+    margin: 1%;
+}
+iframe~a{
+    margin-bottom: 1em;
+}
+
+a{
+    text-decoration: none;
+    color: var(--font-color);
+}
+a:active, a:hover{
+    color: #ccc;
+    text-decoration: underline;
+}
+/*a:visited{
+    color: #ccc;
+}*/
+
+#img{
+    min-width: 300px;
+    min-height: 300px;
+    background-color: var(--darker);
+}
+
+.hero{
+    text-align: left;
+    max-width: 30%;
+    padding: 0 3ch;
+    align-self: center;
+
+    background-color: var(--darker);
+    filter: drop-shadow(8px 8px 0px var(--bg-color));
+}
+
+.blob-corner-top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+.scattered-blobs{
+    position: absolute;
+    z-index: -2;
+}
+
+.wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    z-index: 999;
+}
+
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(112% + 1.3px);
+    height: 51px;
+}
+
+.wave1 .shape-fill {
+    fill: var(--bg-color);
+}
+
+.fullScreen {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+@media only screen and (max-width: 768px){
+    header{
+        width: 100%;
+        margin-top: 0;
+        flex-direction: column-reverse;
+    }
+    .hero{
+        text-align: center;
+        max-width: 80%;
+        filter: unset;
+        margin-bottom: 2rem;
+    }
+    .hero p{
+        padding: 0 1ch;
+    }
+    article{
+        font-size: 18;
+    }
+    section{
+        text-align: center;
+    }
+
+    .grid{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    .grid section:nth-child(even){
+        background-color: var(--red);
+    }
+
+    #about_me{
+        width: 95%;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    
+    #map{
+        width: 70%;
+        padding: 0;
+        padding-top: 1ch;
+        border: 0;
+        border-top: 10px solid var(--purple1);
+    }
+}
