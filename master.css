@@ -10,7 +10,7 @@
     --purple1: #9C4FAD;
     --purple2: #D665F0;
 
-    --red: #d35d76;
+    --red: #b43c56;
 }
 
 html{
@@ -120,6 +120,9 @@ iframe{
 }
 iframe~a{
     margin-bottom: 1em;
+    padding: 0.5rem;
+    border: 1px solid var(--red);
+    background-color: var(--darker);
 }
 
 a{
