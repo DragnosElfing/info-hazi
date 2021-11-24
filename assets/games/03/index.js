@@ -70,13 +70,13 @@ for(let _=0;_<=100;_++){
 
     circles.push(new Circle(randX-radius<0?randX+radius:(randX+radius)>CANVAS.width?randX-radius:randX,
                         randY-radius<0?randY+radius:(randY+radius)>CANVAS.height?randY-radius:randY, 
-                        radius));
+                        radius)); // no.
 }
 
 function applyGravity(){
     requestAnimationFrame(applyGravity);
     
-    CTX.fillStyle = 'rgba(200, 60, 150, 0.4)'
+    CTX.fillStyle = 'rgba(180, 100, 150, 0.4)';
     CTX.fillRect(0, 0, CANVAS.width, CANVAS.height);
 
     for(let circle of circles){

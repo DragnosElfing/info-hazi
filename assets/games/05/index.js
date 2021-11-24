@@ -75,55 +75,6 @@ function DIAGS_CollisionResolve(sh1, sh2){
     return false;
 }
 
-function SAT_CollisionResolve(a, b){
-    let p1 = a;
-    let p2 = b;
-
-    for(let shape=0; shape < 2; shape++){
-        if(shape == 1){
-            p1 = b;
-            p2 = a;
-        }
-
-        let vertices1 = [],
-            vertices2 = [];
-
-        // loop through the vertices of the shapes
-        for(let e=0; e < p1.globalVertices.length; e++){
-            // get the 1st shapes' edges
-            let n = (e+1)%p1.globalVertices.length;
-            let edge = Vector2d.sub(p1.globalVertices[n], p1.globalVertices[e]);
-            
-            // calculate the edge normals
-            let projectionAxis = Vector2d.normal(edge).normalize();
-
-            // project both shapes' vertices to the projectionAxis
-            for(let v of p1.globalVertices){
-                let vertexProjection = Vector2d.dot(v, projectionAxis);
-                vertices1.push(vertexProjection);
-            }
-            for(let v of p2.globalVertices){
-                let vertexProjection = Vector2d.dot(v, projectionAxis);
-                vertices2.push(vertexProjection);
-            }
-            
-            // get the shadows extend
-            let minVertex1 = Math.min(...vertices1);
-            let maxVertex1 = Math.max(...vertices1);
-
-            let minVertex2 = Math.min(...vertices2);
-            let maxVertex2 = Math.max(...vertices2);
-
-            // check for overlapping shadows
-            if(!(minVertex1 <= maxVertex2 && maxVertex1 >= minVertex2)){
-                return false;
-            }
-        }
-    }
-
-    return true;
-}
-
 class RectObject{
     constructor(x, y, width, height, rotation=0){
         this.x = x;

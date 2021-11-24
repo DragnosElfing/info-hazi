@@ -80,7 +80,8 @@ function init(){
 
 function animate(){
     requestAnimationFrame(animate);
-    CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
+    CTX.fillStyle = "black";
+    CTX.fillRect(0, 0, CANVAS.width, CANVAS.height);
 
     for(let circle of circles){
         circle.update();
@@ -90,82 +91,3 @@ function animate(){
 
 init();
 animate();
-
-/*let randX = Math.random()*CANVAS.width;
-let randY = Math.random()*CANVAS.height;
-basicAnimation(randX-this.radius<0?randX+this.radius+6:(randX+this.radius)>CANVAS.width?randX-this.radius:randX, 
-                randY-this.radius<0?randY+this.radius+6:(randY+this.radius)>CANVAS.height?randY-this.radius:randY);
-*/
-/*let lines = [];
-let INIT_X, INIT_Y;
-let clicks = 1,
-    objCount = 0;
-
-let t1 = 0, t2 = 0;
-
-CANVAS.onmousedown = (e)=>{
-    if(e.buttons == 2){
-        if(clicks != 1) lines[objCount] = {cancelled: true};
-        else return false;
-    }
-    INIT_X = e.clientX;
-    INIT_Y = e.clientY-50;
-
-    if(clicks > 0){
-        if(!CONTINOUS_DRAWING.checked){
-            if(clicks > 1){
-                INIT_X = undefined;
-                INIT_Y = undefined;
-    
-                clicks = 0;
-            }
-        }else{
-            clicks = 0;
-        }
-        objCount++;
-    }
-    clicks++;
-}
-CANVAS.onmousemove = (e)=>{
-    CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
-    if(lines.length != 0){
-        for(let line of lines){
-            if(!line.cancelled){
-                drawLine(CTX, line.x1, line.y1, line.x2, line.y2, line.color);
-            }
-        }
-    }
-
-    //drawLine(CTX, INIT_X, INIT_Y, e.clientX, e.clientY, 'black');
-    t1 = Math.abs(INIT_X-e.clientX)/Math.sqrt(Math.abs(INIT_X-e.clientX)**2+Math.abs(INIT_Y-e.clientY)**2);
-    t2 = Math.abs(INIT_Y-e.clientY)/Math.sqrt(Math.abs(INIT_X-e.clientX)**2+Math.abs(INIT_Y-e.clientY)**2);;
-    console.log(t1, t2)
-    lines[objCount] = {x1: INIT_X, y1: INIT_Y, 
-                    x2: (t1*INIT_X + (1-t1)*e.clientX), y2: (t2*INIT_X + (1-t2)*e.clientY-50), 
-                    color: 'black'};
-}
-
-CLEAR_BUTTON.onclick = (e)=>{
-    e.preventDefault();
-    
-    CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
-    
-    lines = [];
-    objCount = 0;
-    INIT_X = undefined;
-    INIT_Y = undefined;
-}
-
-window.oncontextmenu = (e)=>{
-    return false;
-}
-
-function drawLine(context, x1, y1, x2, y2, color) {
-    context.beginPath();
-    context.strokeStyle = color;
-    context.lineWidth = 3;
-    context.moveTo(x1, y1);
-    context.lineTo(x2, y2);
-    context.stroke();
-    context.closePath();
-}*/
